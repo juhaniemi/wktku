@@ -1,6 +1,4 @@
 wktku
 =====
 
- _\/_
- \  /
-  \/
+DrupalCon Prague diary.
