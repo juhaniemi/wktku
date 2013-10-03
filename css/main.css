@@ -1,0 +1,71 @@
+body {
+  background: #000;
+  color: gold;
+  margin: 0;
+  padding: 1em 1em 1em 2em;
+}
+
+h1 {
+  text-shadow: 0px 0px 15px rgba(255, 215, 0, 0.5), 0px 0px 40px rgba(255, 215, 0, 0.3);
+}
+
+figure {
+  box-shadow:  0px 0px 40px rgba(255, 215, 0, 0.35), 0px 0px 20px rgba(0, 0, 0, 1);
+  border: 1px solid gold;
+  float: left;
+  margin: 1em 2em 1em 0;
+  padding: 0;
+  width: 308px;
+  height: 335px;
+  position: relative;
+  z-index: 1;
+}
+figure:hover {
+  z-index: 2;
+}
+figure a {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  border: 1px solid #000;
+  display: block;
+  margin: 0px;
+  overflow: hidden;
+  position: relative;
+  z-index: 3;
+}
+figure a img {
+  display: block;
+  vertical-align: bottom;
+}
+figcaption {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
+  background: #CD950C;
+  border-bottom: 1px solid #000;
+  color: #000;
+  font-size: .9em;
+  line-height: 1.5;
+  max-height: 2em;
+  margin: -1em -1px 0;
+  overflow: hidden;
+  padding-top: 1em;
+  position: relative;
+  width: 310px;
+  z-index: 2;
+}
+figure:hover figcaption {
+  margin-top: -.9em;
+  max-height: none;
+}
+figcaption .caption {
+  display: inline-block;
+  max-width: 70%;
+  padding: 0.25em 4%;
+}
+figcaption .likes {
+  color: #000;
+  float: right;
+  margin-left: -34%;
+  opacity: 0.5;
+  padding: 0.25em 4% 0.25em 0;
+  text-align: right;
+  width: 30%;
+}

@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src="js/instafeed.min.js" type="text/javascript"></script>
 
     <title>Turku Instafeed</title>
@@ -27,8 +28,8 @@
       get: 'tagged',
       tagName: 'wktku',
       limit: 60,
-      resolution: 'standard_resolution',
-      template: '<a href="{{image}}"><img src="{{image}}" /></a>',
+      resolution: 'low_resolution',
+      template: '<figure><a href="{{model.images.standard_resolution.url}}"><img src="{{image}}" /></a><figcaption><span class="caption">"{{caption}}"</span> <span class="likes">&#10084; {{likes}}</span></figcaption></figure>',
       clientId: '4d2075f6e2c645839da4089dc27e88b2'
     });
     feed.run();
