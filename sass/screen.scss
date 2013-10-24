@@ -4,7 +4,7 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass/reset";
-@import "compass/css3/transition";
+@import "compass/css3";
 
 $white-color: #fafafa;
 $carbon-color: #555;
@@ -21,6 +21,10 @@ body {
 
 #page {
   width: 98%;
+}
+
+#instafeed {
+  padding-bottom: 308px;
 }
 
 h1 {
@@ -46,6 +50,17 @@ figure {
   vertical-align: middle;
   text-align: left;
   overflow: hidden;
+  @include transition-property(all);
+  @include transition-duration(0.35s);
+  @include transition-delay(0.1s);
+  &.new {
+    opacity: 0.0;
+    @include transform(translate(0px, 150px));
+  }
+  &.ready {
+    opacity: 1.0;
+    @include transform(translate(0,0));
+  }
   a {
     display: block;
     position:relative;

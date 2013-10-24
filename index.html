@@ -32,11 +32,18 @@
       tagName: 'wktku',
       limit: 20,
       resolution: 'low_resolution',
-      template: '<figure><a href="{{model.images.standard_resolution.url}}"><img src="{{image}}" /></a><figcaption><span class="caption">"{{caption}}"</span> <span class="likes">&#10084; {{likes}}</span></figcaption></figure>',
+      template: '<figure class="new"><a href="{{model.images.standard_resolution.url}}"><img src="{{image}}" /></a><figcaption><span class="caption">"{{caption}}"</span> <span class="likes">&#10084; {{likes}}</span></figcaption></figure>',
       clientId: '4d2075f6e2c645839da4089dc27e88b2',
       append: true,
-      success: function() {
+      after: function() {
         apiBusy = false;
+        var container = document.getElementById('instafeed');
+        var imgList = document.getElementsByClassName('new');
+        while (imgList.length > 0) {
+          var img = imgList[0];
+          img.classList.add('ready');
+          img.classList.remove('new');
+        }
       }
     });
     feed.run();
