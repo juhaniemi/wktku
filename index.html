@@ -48,22 +48,46 @@
     });
     feed.run();
     
-    // Bind onscroll to load new images lazily
-    window.onscroll = function() {
-      if (!apiBusy) {
-        // Get last image and its offset from top
-        var container = document.getElementById('instafeed');
-        var imgList = container.getElementsByTagName('figure');
-        var lastImg = imgList[imgList.length-1];
-        var lastImgOffset = lastImg.getBoundingClientRect().top;
-        var scrollTop = document.body.offsetTop;
-        var windowBottom = scrollTop + window.innerHeight;
-        if (windowBottom > lastImgOffset) {
-          apiBusy = true;
-          feed.runNext();
+    var previousScroll = window.scrollY;
+    var checkScrollZeroDelta = function() {
+      var scrollTop = window.scrollY;
+      var oldScrollTop = previousScroll;
+      previousScroll = scrollTop;
+      zeroDelta = (oldScrollTop == scrollTop);
+      return zeroDelta;
+    }
+    
+    var movingTimer = 0;
+    var timerCallback = function() {
+      clearInterval(movingTimer);
+      movingTimer = 0;
+      scrollCallback();
+    };
+
+    var scrollCallback = function() {
+      if (movingTimer === 0 && checkScrollZeroDelta() === true) {
+        if (!apiBusy) {
+          // Get last image and its offset from top
+          var container = document.getElementById('instafeed');
+          var imgList = container.getElementsByTagName('figure');
+          var lastImg = imgList[imgList.length-1];
+          var lastImgOffset = lastImg.getBoundingClientRect().top;
+          var scrollTop = document.body.offsetTop;
+          var windowBottom = scrollTop + window.innerHeight - 300;
+          if (windowBottom > lastImgOffset) {
+            apiBusy = true;
+            feed.runNext();
+          }
         }
       }
+      else if (movingTimer === 0) {
+        movingTimer = setInterval(timerCallback, 250);
+      }
     };
+    
+    // Bind onscroll to load new images lazily
+    window.onscroll = scrollCallback;
+    
   </script>
 
   </body>
