@@ -12,6 +12,10 @@ $white-color: #fafafa;
 $carbon-color: #555;
 $main-color: #ff962c;
 
+* {
+  @include box-sizing(border-box);
+}
+
 body {
   background: $white-color;
   color: $carbon-color;
