@@ -22,26 +22,39 @@ body {
 }
 
 #message {
-  border-bottom: 1px solid #bbb;
-  p {
+  position: relative;
+  .player {
+    @include fluid-aspect(16 9);
+    background: #eee;
+  }
+  .text {
     @include box-sizing(border-box);
-    background: rgba(255,255,255, 0.5);
-    bottom: 0;
-    left: 0;
-    position: absolute;
+    background: #ccc;
     width: 100%;
     padding: 1em 10%;
 
     color: #000;
-    font-size: 1.1em;
     line-height: 1.5;
-    font-weight: 500;
+    strong {
+      font-weight: 600;
+      white-space: nowrap;
+    }
   }
 }
 
-.player {
-  @include fluid-aspect(16 9, player);
-  background: #eee;
+@media (min-width: 830px) {
+  #message .text {
+    background: rgba(255,255,255, 0.5);
+    bottom: 0;
+    left: 0;
+    position: absolute;
+
+    font-size: 1.1em;
+
+    strong {
+
+    }
+  }
 }
 
 #page {
