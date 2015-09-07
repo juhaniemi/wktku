@@ -1,4 +1,4 @@
 wktku
 =====
 
-DrupalCon Prague diary.
+Adventures of the Wunder Turku office.
